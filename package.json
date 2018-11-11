@@ -1,0 +1,31 @@
+{
+  "name": "@engineforce/google-map-lib",
+  "description": "Google map helpers",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "gulp generateTsConfig && parcel build index.ts --target node --no-minify --no-source-maps",
+    "dev": "gulp generateTsConfig && parcel index.ts --target node --no-source-maps",
+    "test": "tsc && jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.17.11",
+    "ramda": "^0.25.0"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-typescript": "^7.1.0",
+    "@engineforce/build-config": "github:engineforce/build-config#v0.0.2",
+    "@types/lodash": "^4.14.117",
+    "@types/ramda": "github:types/npm-ramda#dist",
+    "babel-core": "^7.0.0-bridge.0",
+    "gulp": "^4.0.0",
+    "jest": "^23.5.0",
+    "parcel-bundler": "^1.10.3",
+    "strip-json-comments": "^2.0.1",
+    "typescript": "^3.1.6"
+  }
+}
