@@ -104,61 +104,56 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   // Override the current require with this new one
   return newRequire;
-})({"src/getAddressDetail.ts":[function(require,module,exports) {
+})({"a0j6":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.getAddressDetail = getAddressDetail;
-
-var _promise = _interopRequireDefault(require("@babel/runtime-corejs2/core-js/promise"));
+exports.getAddressInfo = getAddressInfo;
 
 var _ramda = require("ramda");
 
-var _pipe = _interopRequireDefault(require("ramda/es/pipe"));
-
-var _contains = _interopRequireDefault(require("ramda/es/contains"));
-
-var _prop = _interopRequireDefault(require("ramda/es/prop"));
-
-var _applySpec = _interopRequireDefault(require("ramda/es/applySpec"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-async function getAddressDetail({
-  detail
-}) {
-  await _promise.default.resolve();
-  return (0, _applySpec.default)({
+async function getAddressInfo(input) {
+  await Promise.resolve();
+  return (0, _ramda.applySpec)({
+    unitNumber: input => getUnitNumber(input.data.description),
     streetNumber: getAddressComponent('street_number'),
     street: getAddressComponent('route'),
     suburb: getAddressComponent('locality'),
     state: getAddressComponent('administrative_area_level_1'),
     postCode: getAddressComponent('postal_code'),
     country: getAddressComponent('country')
-  })(detail);
+  })(input);
 }
 
 function getAddressComponent(type) {
-  return (0, _pipe.default)((0, _prop.default)('address_components'), (0, _ramda.filter)(s => (0, _contains.default)(type, s.types)), _ramda.head, (0, _prop.default)('long_name'));
+  return (0, _ramda.pipe)((0, _ramda.prop)('detail'), (0, _ramda.prop)('address_components'), (0, _ramda.filter)(s => (0, _ramda.contains)(type, s.types)), _ramda.head, (0, _ramda.prop)('long_name'));
 }
-},{}],"index.ts":[function(require,module,exports) {
+
+function getUnitNumber(description) {
+  if (!description || description.indexOf('/') <= -1) {
+    return undefined;
+  }
+
+  return description.split('/')[0];
+}
+},{}],"7QCb":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _getAddressDetail = require("./src/getAddressDetail");
+var _getAddressInfo = require("./src/getAddressInfo");
 
-Object.keys(_getAddressDetail).forEach(function (key) {
+Object.keys(_getAddressInfo).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   Object.defineProperty(exports, key, {
     enumerable: true,
     get: function () {
-      return _getAddressDetail[key];
+      return _getAddressInfo[key];
     }
   });
 });
-},{"./src/getAddressDetail":"src/getAddressDetail.ts"}]},{},["index.ts"], null)
+},{"./src/getAddressInfo":"a0j6"}]},{},["7QCb"], null)
