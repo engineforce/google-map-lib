@@ -18,7 +18,7 @@
   "devDependencies": {
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-typescript": "^7.1.0",
-    "@engineforce/build-config": "github:engineforce/build-config#v0.0.2",
+    "@engineforce/build-config": "github:engineforce/build-config",
     "@types/lodash": "^4.14.117",
     "@types/ramda": "github:types/npm-ramda#dist",
     "babel-core": "^7.0.0-bridge.0",
@@ -26,6 +26,6 @@
     "jest": "^23.5.0",
     "parcel-bundler": "^1.10.3",
     "strip-json-comments": "^2.0.1",
-    "typescript": "^3.1.6"
+    "typescript": "^3.2.2"
   }
 }
