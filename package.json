@@ -1,7 +1,7 @@
 {
   "name": "@engineforce/google-map-lib",
   "description": "Google map helpers",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "dist/index.js",
   "scripts": {
     "build": "gulp generateTsConfig && parcel build index.ts --target node --no-minify --no-source-maps",
